@@ -9,7 +9,7 @@ export default function Home() {
   const [produtos, setProdutos] = useState([]);
 
   async function getProdutos() {
-    await fetch('https://fakestoreapi.com/products', {
+    await fetch('https://fakestoreapi.com/products', {   
       method: 'GET',
       headers: {
         'content-type': 'application/json'

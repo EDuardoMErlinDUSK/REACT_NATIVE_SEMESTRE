@@ -38,7 +38,7 @@ export default function Login() {
                 <Text style={css.forgotText}>Esqueceu a senha?</Text>
             </View>
             <TouchableOpacity style={css.btnLogin} onPress={RealizaLogin}>
-                <Text style={css.btnLoginText}>Log In</Text>
+                <Text style={css.btnLoginText}>Login</Text>
             </TouchableOpacity>
             {error &&
                 <View style={css.error}>
@@ -55,7 +55,7 @@ const css = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
-        backgroundColor: "#191919"
+        backgroundColor: "#46B45E"
     },
     logo: {
         width: "60%",
@@ -77,7 +77,7 @@ const css = StyleSheet.create({
         alignItems: "flex-end",
     },
     forgotText: {
-        color: "#0195fd",
+        color: "white",
         fontWeight: "bold"
     },
     btnLogin: {
@@ -86,10 +86,11 @@ const css = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         marginTop: 30,
-        backgroundColor: "#0195fd"
+        backgroundColor: "white",
+        
     },
     btnLoginText: {
-        color: "white",
+        color: "black",
         lineHeight: 45,
         textAlign: "center",
         fontSize: 15,
