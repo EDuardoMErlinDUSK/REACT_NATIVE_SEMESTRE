@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 export default function Produto({ title, image, description, price, category, rating }) {
@@ -17,6 +17,10 @@ export default function Produto({ title, image, description, price, category, ra
             <View style={css.categoryBox}>
                 <Text style={css.categoryText}>{category}</Text>
             </View>
+
+            <TouchableOpacity style={css.btnDeta}>
+                <Text>Detalhes</Text>
+            </TouchableOpacity>
             
         </View>
     )
@@ -43,8 +47,9 @@ const css = StyleSheet.create({
         marginRight: 10
     },
     title: {
-        color: "white",
-        textAlign: "center"
+        color: "black",
+        textAlign: "center",
+        fontSize: 20
     },
     boxImage: {
         width: "100%",
@@ -53,7 +58,9 @@ const css = StyleSheet.create({
     imagem: {
         width: "100%",
         height: "100%",
-        resizeMode: "cover"
+        resizeMode: "cover",
+        borderColor: "lightgreen",
+        borderWidth: 2
     },
     categoryBox: {
         width: "100%",
@@ -74,5 +81,13 @@ const css = StyleSheet.create({
     },
     categoryText: {
         color: "white"
+    },
+
+    btnDeta: {
+        backgroundColor: "lightgreen",
+        borderWidth: 2,
+        borderColor: "",
+        marginTop: -90,
+        height: 25
     }
 })

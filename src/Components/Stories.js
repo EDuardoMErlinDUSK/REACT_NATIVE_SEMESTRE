@@ -8,7 +8,7 @@ export default function Stories({produtos}) {
       data={produtos}
       renderItem={ ({item}) => 
         <View style={css.story}>
-          <Image source={{ uri: item.image}} style={css.image}/>
+          <Image source={{ uri: item.pessoaFoto}} style={css.image}/>
         </View>
       }
       keyExtractor={ (item) => item.id }
@@ -33,7 +33,9 @@ const css = StyleSheet.create({
         height: 60,
         backgroundColor: "white",
         borderRadius: 30,
-        overflow: "hidden"
+        overflow: "hidden",
+        borderWidth: 2,
+        borderColor: "lightgreen"
     },
     image: {
       width: "100%",

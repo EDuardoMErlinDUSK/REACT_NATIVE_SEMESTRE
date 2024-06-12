@@ -19,7 +19,7 @@ export default function Login() {
             <Image source={require("../../assets/logo.png")} style={css.logo} />
             <TextInput
                 inputMode="email"
-                placeholder="Email"
+                placeholder="Email do Usuário"
                 style={css.input}
                 value={email}
                 onChangeText={(digitado) => setEmail(digitado)}
@@ -27,7 +27,7 @@ export default function Login() {
             />
             <TextInput
                 inputMode="text"
-                placeholder="Password"
+                placeholder="Senha"
                 secureTextEntry={true}
                 style={css.input}
                 value={senha}
@@ -38,7 +38,7 @@ export default function Login() {
                 <Text style={css.forgotText}>Esqueceu a senha?</Text>
             </View>
             <TouchableOpacity style={css.btnLogin} onPress={RealizaLogin}>
-                <Text style={css.btnLoginText}>Login</Text>
+                <Text style={css.btnLoginText}>Entrar</Text>
             </TouchableOpacity>
             {error &&
                 <View style={css.error}>
