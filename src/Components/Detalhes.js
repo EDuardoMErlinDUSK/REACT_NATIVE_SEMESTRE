@@ -21,8 +21,8 @@ export default function Detalhes({ setDetalhes, pessoaNome, pessoaRoupa, pessoaC
             <Text style={css.dadosInfo}>{PessoaStatus}</Text>
             <Text style={css.dadosInfo}>{usuarioNome}</Text>
            
-            <TouchableOpacity onPress={()=> setObservacao(true)}>
-                <Text>Nova Observação</Text>
+            <TouchableOpacity onPress={()=> setObservacao(true)} style={css.btnObserva}>
+                <Text style={css.ObservaTXT}>Nova Observação</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={()=> setDetalhes(false)} style={css.btnVoltar}>
@@ -52,6 +52,15 @@ const css = StyleSheet.create({
     },
 
     dadosInfo: {
+        color: "white"
+    },
+
+    btnObserva: {
+        color:"white",
+        color: "blue"
+    },
+
+    ObservaTXT: {
         color: "white"
     }
   
