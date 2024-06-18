@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Produto({ title, image, description, price, category, rating }) {
+export default function Produto({ title, image, description, id, category, getPessoaId,setDetalhes }) {
+   
     return (
         <View style={css.container}>
+            <>
             <View style={css.boxTitle}>
                 <View style={css.circleAvatar}></View>
                 <Text style={css.title}>{title}</Text>
@@ -18,10 +20,10 @@ export default function Produto({ title, image, description, price, category, ra
                 <Text style={css.categoryText}>{category}</Text>
             </View>
 
-            <TouchableOpacity style={css.btnDeta}>
+            <TouchableOpacity style={css.btnDeta} onPress={()=> {setDetalhes(true); getPessoaId(id)}}>
                 <Text>Detalhes</Text>
             </TouchableOpacity>
-            
+            </>
         </View>
     )
 }
