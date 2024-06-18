@@ -12,7 +12,7 @@ export default function Stories({produtos}) {
         </View>
       }
       keyExtractor={ (item) => item.id }
-      contentContainerStyle={[css.container, { width: produtos.length * 70 }]}
+      contentContainerStyle={css.container}
       horizontal={true}
     />
   )
@@ -20,15 +20,19 @@ export default function Stories({produtos}) {
 const css = StyleSheet.create({
     container: {
         height: 130,
-        padding: 20,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "flex-end",
-        gap: 10,
-        marginBottom: 20
+        width: "100%",
+       // padding: 20,
+       // display: "flex",
+       // flexDirection: "row",
+       // justifyContent: "center",
+       // alignItems: "flex-end",
+       // gap: 10,
+       // marginBottom: 20,
+        backgroundColor: "#58C470",
+        
+        
     },
-    story: {
+    /*story: {
         width: 60,
         height: 60,
         backgroundColor: "white",
@@ -41,5 +45,5 @@ const css = StyleSheet.create({
       width: "100%",
       height: "100%",
       resizeMode: "cover"
-    }
+    }*/
 })

@@ -38,6 +38,8 @@ export default function Inserir() {
         placeholder="Nome do Usuário"
         value={usuarioNome}
         onChangeText={(digitado) => setUsuarioNome(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
       <TextInput
@@ -45,6 +47,8 @@ export default function Inserir() {
         placeholder="Tell Do Usuário"
         value={usuarioTelefone}
         onChangeText={(digitado) => setUsuarioTelefone(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
       <TextInput
@@ -52,6 +56,8 @@ export default function Inserir() {
         placeholder="Email do Usuário"
         value={usuarioEmail}
         onChangeText={(digitado) => setUsuarioEmail(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
       <TextInput
@@ -59,10 +65,12 @@ export default function Inserir() {
         placeholder="Senha do Usuário"
         value={usuarioSenha}
         onChangeText={(digitado) => setUsuarioSenha(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
-      <TouchableOpacity onPress={CadastraUsu}>
-        <Text>Create</Text>
+      <TouchableOpacity onPress={CadastraUsu} style={css.btn}>
+        <Text style={css.btnTXT}>Create</Text>
       </TouchableOpacity>
     </View>
 
@@ -70,13 +78,50 @@ export default function Inserir() {
 }
 const css = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#2A2A2A",
     flexGrow: 1,
-    color: "white",
+    
     justifyContent: "center",
     alignItems: "center"
   },
   text: {
-    color: "black"
-  }
+    color: "white",
+    fontSize: 20,
+    
+  },
+
+  campos: {
+    color: "white",
+    borderWidth: 2,
+    borderColor: "#58C470",
+    width: 340,
+    borderRadius: 7,
+    height: 50,
+    marginTop: 30
+
+  },
+
+    btn: {
+      color: "white",
+      borderWidth: 2,
+      borderColor: "#58C470",
+      width: 340,
+      borderRadius: 7,
+      marginTop: 30,
+      height: 50,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#58C470"
+      
+      
+    },
+
+    btnTXT: {
+      color: "white",
+      alignItems: "center",
+      
+    },
+
+    
 })

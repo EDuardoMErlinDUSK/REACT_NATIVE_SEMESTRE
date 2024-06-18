@@ -21,7 +21,7 @@ export default function Produto({ title, image, description, id, category, getPe
             </View>
 
             <TouchableOpacity style={css.btnDeta} onPress={()=> {setDetalhes(true); getPessoaId(id)}}>
-                <Text>Detalhes</Text>
+                <Text style={css.btnText}>Detalhes</Text>
             </TouchableOpacity>
             </>
         </View>
@@ -42,16 +42,20 @@ const css = StyleSheet.create({
         paddingLeft: 5
     },
     circleAvatar: {
-        width: 30,
+        /*width: 30,
         height: 30,
         borderRadius: 50,
         backgroundColor: "white",
-        marginRight: 10
+        marginRight: 10*/
     },
     title: {
-        color: "black",
+        color: "white",
         textAlign: "center",
-        fontSize: 20
+        fontSize: 20,
+        display:"flex",
+        justifyContent: "center",
+        alignItems: "center",
+      
     },
     boxImage: {
         width: "100%",
@@ -61,7 +65,7 @@ const css = StyleSheet.create({
         width: "100%",
         height: "100%",
         resizeMode: "cover",
-        borderColor: "lightgreen",
+        borderColor: "#58C470",
         borderWidth: 2
     },
     categoryBox: {
@@ -86,10 +90,17 @@ const css = StyleSheet.create({
     },
 
     btnDeta: {
-        backgroundColor: "lightgreen",
+        backgroundColor: "#2A2A2A",
         borderWidth: 2,
-        borderColor: "",
+        borderColor: "#58C470",
         marginTop: -90,
-        height: 25
+        height: 25,
+        width: 200,
+        alignItems: "center",
+       
+
+    },
+    btnText:{
+        color: "white"
     }
 })

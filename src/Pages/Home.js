@@ -39,7 +39,8 @@ export default function Home() {
 
   //=========================================================================
 
-  async function getPessoaId(id) {
+  async function getPessoaId(id) {   
+       
     await fetch('http://10.139.75.60:5251/api/Pessoas/GetPessoaId/' + id, {
       method: 'GET',
       headers: {
@@ -47,28 +48,25 @@ export default function Home() {
       },
     })
       .then((response) => response.json())
-      .then(json => {
-
-        setPessoaNome(json.PessoaNome);
-        setPessoaRoupa(json.PessoaRoupa);
-        setPessoaCor(json.PessoaCor);
-        setPessoaSexo(json.PessoaSexo);
-        setPessoaObservacao(json.PessoaObservacao);
-        setPessoaLocalDesaparecimento(json.PessoaLocalDesaparecimento);
-        setPessoaDtDesaparecimento(json.PessoaDtDesaparecimento);
-        setPessoaDtEncontro(json.PessoaDtEncontro);
-        setPessoaStatus(json.PessoaStatus);
-
-
-      });
-    getUsuarioId();
-
+      .then(json => { 
+        setPessoaNome(json.pessoaNome);
+        setPessoaRoupa(json.pessoaRoupa);
+        setPessoaCor(json.pessoaCor);
+        setPessoaSexo(json.pessoaSexo);
+        setPessoaObservacao(json.pessoaObservacao);
+        setPessoaLocalDesaparecimento(json.pessoaLocalDesaparecimento);
+        setPessoaDtDesaparecimento(json.pessoaDtDesaparecimento);
+        setPessoaDtEncontro(json.pessoaDtEncontro);
+        setPessoaStatus(json.pessoaStatus);
+      })
+      .catch(err => console.log(err))
   }
 
   //========================================================================
 
   async function getUsuarioId(id) {
-    await fetch('http://10.139.75.60:5251/http://api/Usuarios/GetUsuarioId/' + id, {
+    console.log(id);
+      await fetch('http://10.139.75.60:5251/http://api/Usuarios/GetUsuarioId/' + id, {
       method: 'GET',
       headers: {
         'content-type': 'application/json; charset=UTF-8',
@@ -77,28 +75,14 @@ export default function Home() {
       .then((response) => response.json())
       .then(json => {
         setUsuarioNome(json.UsuarioNome);
-      });
+      })
+      .catch(err => console.log(err))
 
   }
 
   //PARA BAIXO é o DETALHES
   //=@@@@====######=======%%====!!!========#####======@@====%%======!!======######======@@===#####=======================
 
-
-  async function getDetalhes(id) {
-    await fetch('http://10.139.75.60:5251/http:/api/Pessoas/GetPessoaId/' + id, {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => response.json())
-      .then(json => {
-        setPessoaObservacao(json.PessoaObservacao);
-
-      });
-
-  }
 
 
   return (
@@ -108,7 +92,7 @@ export default function Home() {
           <Stories produtos={produtos} />
           <FlatList
             data={produtos}
-            renderItem={({ item }) => <Produto style={css.container} title={item.pessoaNome} image={item.pessoaFoto} setDetalhes={setDetalhes} getPessoaId={getPessoaId}/*description={item.pessoaObservacao}*/ />}
+            renderItem={({ item }) => <Produto style={css.container} title={item.pessoaNome} id={item.pessoaId} image={item.pessoaFoto} setDetalhes={setDetalhes} getPessoaId={getPessoaId}/*description={item.pessoaObservacao}*/ />}
             keyExtractor={(item) => item.pessoaId}
             contentContainerStyle={{ height: (produtos.length * 600) + 110 }}
           />
@@ -118,21 +102,19 @@ export default function Home() {
         <Text style={css.text}>Carregando produtos...</Text>}
 
       {detalhes && <Detalhes
-
-        getPessoaId={getPessoaId}
-        description={pessoaObservacao}
-        setDetalhes={setDetalhes}
-        pessoaNome={pessoaNome}
-        pessoaRoupa={pessoaRoupa}
-        pessoaCor={pessoaCor}
-        pessoaSexo={pessoaSexo}
-        pessoaObservacao={pessoaObservacao}
-        pessoaLocalDesaparecimento={pessoaLocalDesaparecimento}
-        pessoaDtDesaparecimento={pessoaDtDesaparecimento}
-        pessoaDtEncontro={pessoaDtEncontro}
-        PessoaStatus={PessoaStatus}
-        usuarioNome={usuarioNome}
-        getDetalhes={getDetalhes}
+          getPessoaId={getPessoaId}
+          description={pessoaObservacao}
+          setDetalhes={setDetalhes}
+          pessoaNome={pessoaNome}
+          pessoaRoupa={pessoaRoupa}
+          pessoaCor={pessoaCor}
+          pessoaSexo={pessoaSexo}
+          pessoaObservacao={pessoaObservacao}
+          pessoaLocalDesaparecimento={pessoaLocalDesaparecimento}
+          pessoaDtDesaparecimento={pessoaDtDesaparecimento}
+          pessoaDtEncontro={pessoaDtEncontro}
+          PessoaStatus={PessoaStatus}
+          usuarioNome={usuarioNome}
       />}
     </View>
   )
@@ -140,7 +122,7 @@ export default function Home() {
 const css = StyleSheet.create({
   container: {
     color: "black",
-    backgroundColor: "lightgray",
+    backgroundColor: "#2A2A2A",
   }
 
 

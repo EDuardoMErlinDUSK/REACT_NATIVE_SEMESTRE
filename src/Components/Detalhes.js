@@ -1,35 +1,59 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity,FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
-export default function Detalhes({ onPress, setDetalhes, pessoaNome, pessoaRoupa, pessoaCor, pessoaSexo, pessoaObservacao, pessoaLocalDesaparecimento, pessoaDtDesaparecimento, pessoaDtEncontro, PessoaStatus, usuarioNome
+export default function Detalhes({ setDetalhes, pessoaNome, pessoaRoupa, pessoaCor, pessoaSexo, pessoaObservacao, pessoaLocalDesaparecimento, pessoaDtDesaparecimento, pessoaDtEncontro, PessoaStatus, usuarioNome
 
 }) {
-  
+    const [observacao, setObservacao] = useState();
 
     return (
-        <View >
-          
-            <Text>Detalhes</Text>
-            <Text>{pessoaNome}</Text>
-            <Text>{pessoaRoupa}</Text>
-            <Text>{pessoaCor}</Text>
-            <Text>{pessoaSexo}</Text>
-            <Text>{pessoaObservacao}</Text>
-            <Text>{pessoaLocalDesaparecimento}</Text>
-            <Text>{pessoaDtDesaparecimento}</Text>
-            <Text>{pessoaDtEncontro}</Text>
-            <Text>{PessoaStatus}</Text>
-            <Text>{usuarioNome}</Text>
+        <View style={css.container} >
+             
+            <Text style={css.dadosInfo}>Detalhes</Text>
+            <Text style={css.dadosInfo}>{pessoaNome}</Text>
+            <Text style={css.dadosInfo}>{pessoaRoupa}</Text>
+            <Text style={css.dadosInfo}>{pessoaCor}</Text>
+            <Text style={css.dadosInfo}>{pessoaSexo}</Text>
+            <Text style={css.dadosInfo}>{pessoaObservacao}</Text>
+            <Text style={css.dadosInfo}>{pessoaLocalDesaparecimento}</Text>
+            <Text style={css.dadosInfo}>{pessoaDtDesaparecimento}</Text>
+            <Text style={css.dadosInfo}>{pessoaDtEncontro}</Text>
+            <Text style={css.dadosInfo}>{PessoaStatus}</Text>
+            <Text style={css.dadosInfo}>{usuarioNome}</Text>
            
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=> setObservacao(true)}>
                 <Text>Nova Observação</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={setDetalhes(false)}>
-                <Text>Voltar</Text>
+            <TouchableOpacity onPress={()=> setDetalhes(false)} style={css.btnVoltar}>
+                <Text style={css.VoltarTxt}>Voltar</Text>
             </TouchableOpacity>
             
            
         </View>
     )
 }
+const css = StyleSheet.create({
+    container: {
+        backgroundColor: "#2A2A2A",
+        flexGrow: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 200
+    },
+
+    btnVoltar: {
+        color: "white",
+        backgroundColor: "green"
+    },
+
+    VoltarTxt: {
+        color: "white"
+    },
+
+    dadosInfo: {
+        color: "white"
+    }
+  
+  
+  })
