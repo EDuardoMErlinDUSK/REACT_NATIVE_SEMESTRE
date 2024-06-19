@@ -1,20 +1,14 @@
 import { View, Text, StyleSheet, FlatList, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 
-export default function Stories({produtos}) {
+export default function Stories() {
 
   return (
-    <FlatList
-      data={produtos}
-      renderItem={ ({item}) => 
+ 
         <View style={css.story}>
-          <Image source={{ uri: item.pessoaFoto}} style={css.image}/>
+          <Text style={css.Find} >Find Me</Text>
         </View>
-      }
-      keyExtractor={ (item) => item.id }
-      contentContainerStyle={css.container}
-      horizontal={true}
-    />
+
   )
 }
 const css = StyleSheet.create({
@@ -32,18 +26,27 @@ const css = StyleSheet.create({
         
         
     },
-    /*story: {
-        width: 60,
-        height: 60,
-        backgroundColor: "white",
-        borderRadius: 30,
-        overflow: "hidden",
-        borderWidth: 2,
-        borderColor: "lightgreen"
+    story: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+        backgroundColor: "#58C470",
+        
+        
+       
     },
-    image: {
-      width: "100%",
-      height: "100%",
-      resizeMode: "cover"
-    }*/
+
+      Find: {
+        height: 25,
+        width: 200,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 60,
+        fontSize: 24,
+        color: "black"
+        
+      }
+
+      
 })

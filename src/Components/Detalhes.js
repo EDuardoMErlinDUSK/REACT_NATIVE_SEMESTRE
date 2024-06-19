@@ -1,15 +1,17 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity,FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
+import CriarObservacao from './CriarObservacao';
 
-export default function Detalhes({ setDetalhes, pessoaNome, pessoaRoupa, pessoaCor, pessoaSexo, pessoaObservacao, pessoaLocalDesaparecimento, pessoaDtDesaparecimento, pessoaDtEncontro, PessoaStatus, usuarioNome
+export default function Detalhes({ pessoaId, usuarioId, setDetalhes, pessoaNome, pessoaRoupa, pessoaCor, pessoaSexo, pessoaObservacao, pessoaLocalDesaparecimento, pessoaDtDesaparecimento, pessoaDtEncontro, PessoaStatus, usuarioNome
 
 }) {
     const [observacao, setObservacao] = useState();
 
     return (
         <View style={css.container} >
-             
-            <Text style={css.dadosInfo}>Detalhes</Text>
+             {!observacao ?
+             <>
+            <Text style={css.title}>Detalhes</Text>
             <Text style={css.dadosInfo}>{pessoaNome}</Text>
             <Text style={css.dadosInfo}>{pessoaRoupa}</Text>
             <Text style={css.dadosInfo}>{pessoaCor}</Text>
@@ -28,9 +30,19 @@ export default function Detalhes({ setDetalhes, pessoaNome, pessoaRoupa, pessoaC
             <TouchableOpacity onPress={()=> setDetalhes(false)} style={css.btnVoltar}>
                 <Text style={css.VoltarTxt}>Voltar</Text>
             </TouchableOpacity>
-            
-           
+            </>
+             :
+             <CriarObservacao
+             setObservacao={setObservacao}
+             pessoaId={pessoaId}
+             usuarioId={usuarioId}/>
+             }
+
+
+
+
         </View>
+        
     )
 }
 const css = StyleSheet.create({
@@ -39,29 +51,51 @@ const css = StyleSheet.create({
         flexGrow: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 200
+        marginTop: 200,
+    },
+
+    title: {
+        fontSize: 30,
+        color: "white",
+        textDecorationLine: "underline"
     },
 
     btnVoltar: {
         color: "white",
-        backgroundColor: "green"
+        backgroundColor: "#58C470",
+        height: 25,
+        width: 200,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        borderRadius: 5,
+        marginBottom:300
+
     },
 
     VoltarTxt: {
-        color: "white"
+        color: "black"
     },
 
     dadosInfo: {
-        color: "white"
+        color: "white",
+        marginTop:8
     },
 
     btnObserva: {
-        color:"white",
-        color: "blue"
+        color: "white",
+        backgroundColor: "#58C470",
+        height: 25,
+        width: 200,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 5
     },
 
     ObservaTXT: {
-        color: "white"
+        color: "black"
     }
   
   

@@ -1,18 +1,17 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
+import Detalhes from './Detalhes';
 
-export default function CriarObservacao() {
+export default function CriarObservacao({setObservacao,pessoaId, usuarioId}) {
     const [observacaoDescricao, setObservacaoDescricao] = useState();
     const [observacaoLocal, setObservacaoLocal] = useState();
     const [observacaoData, setObservacaoData] = useState();
-    const [pessoaId, setPessoaId] = useState();
-    const [usuarioId, setUsuarioId] = useState();
     
     async function CriarObservacao() {
         if(observacaoDescricao!= null ||observacaoLocal!= null || observacaoData!= null){
         await fetch('http://10.139.75.60:5251/api/Observacoes/InsertObservacoes', {
             method: 'POST',
-            headers: {
+            headers: { 
               'content-type': 'application/json'
             },
             body: JSON.stringify({
@@ -33,13 +32,15 @@ export default function CriarObservacao() {
 
 return (
 <View style={css.container}>
-      <Text style={css.text}>Criar Observação</Text>
+      <Text style={css.title} >Criar Observação</Text>
 
       <TextInput
         inputMode="text"
         placeholder="observação da descrição"
         value={observacaoDescricao}
         onChangeText={(digitado) => setObservacaoDescricao(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
       <TextInput
@@ -47,6 +48,8 @@ return (
         placeholder="Local da observação"
         value={observacaoLocal}
         onChangeText={(digitado) => setObservacaoLocal(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
       <TextInput
@@ -54,13 +57,75 @@ return (
         placeholder="Data da observação"
         value={observacaoData}
         onChangeText={(digitado) => setObservacaoData(digitado)}
+        style={css.campos}
+        placeholderTextColor={"#fff"}
       />
 
 
-      <TouchableOpacity onPress={CriarObservacao}>
-        <Text>Create</Text>
-      </TouchableOpacity>
+      <TouchableOpacity onPress={CriarObservacao} style={css.btn}>
+        <Text>Criar</Text>
+      </TouchableOpacity> 
+
+      <TouchableOpacity onPress={()=> setObservacao(false)} style={css.btnVoltar}>
+                <Text style={css.VoltarTxt}>Voltar</Text>
+            </TouchableOpacity>
+    
     </View>
 )
 
 }
+
+const css = StyleSheet.create({
+
+  container: {
+
+  },
+
+  title: {
+    fontSize: 30,
+    color: "white",
+    textDecorationLine: "underline"
+},
+
+
+  campos: {
+  color: "white",
+  borderWidth: 2,
+  borderColor: "#58C470",
+  width: 340,
+  borderRadius: 7,
+  height: 50,
+  marginTop: 30
+
+},
+
+  btn: {
+    color: "white",
+      borderWidth: 2,
+      borderColor: "#58C470",
+      width: 340,
+      borderRadius: 7,
+      marginTop: 30,
+      height: 50,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#58C470"
+  },
+
+  btnVoltar: {
+    color: "white",
+      borderWidth: 2,
+      borderColor: "#58C470",
+      width: 340,
+      borderRadius: 7,
+      marginTop: 30,
+      height: 50,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#58C470",
+      marginBottom: 300
+  }
+
+})

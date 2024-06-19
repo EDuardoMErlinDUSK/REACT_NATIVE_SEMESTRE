@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 
-export default function Inserir() {
+export default function Inserir({setCadastro}) {
   const [usuarioNome, setUsuarioNome] = useState();
   const [usuarioTelefone, setUsuarioTelefone] = useState();
   const [usuarioEmail, setUsuarioEmail] = useState();
@@ -70,7 +70,11 @@ export default function Inserir() {
       />
 
       <TouchableOpacity onPress={CadastraUsu} style={css.btn}>
-        <Text style={css.btnTXT}>Create</Text>
+        <Text style={css.btnTXT}>Criar</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=> setCadastro(false)} style={css.btn}>
+        <Text style={css.btnTXT}>Voltar</Text>
       </TouchableOpacity>
     </View>
 

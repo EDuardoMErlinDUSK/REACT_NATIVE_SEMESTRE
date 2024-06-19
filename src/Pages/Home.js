@@ -9,7 +9,8 @@ import Detalhes from '../Components/Detalhes';
 export default function Home() {
   const [detalhes, setDetalhes] = useState(false);
   const [produtos, setProdutos] = useState([]);
-  const [pessoa, setPessoa] = useState();
+  const [pessoaId, setPessoaId] = useState();
+  const [usuarioId, setUsuarioId] = useState();
   const [pessoaNome, setPessoaNome] = useState();
   const [pessoaRoupa, setPessoaRoupa] = useState();
   const [pessoaCor, setPessoaCor] = useState();
@@ -39,8 +40,8 @@ export default function Home() {
 
   //=========================================================================
 
-  async function getPessoaId(id) {   
-       
+  async function getPessoaId(id) {
+
     await fetch('http://10.139.75.60:5251/api/Pessoas/GetPessoaId/' + id, {
       method: 'GET',
       headers: {
@@ -48,7 +49,9 @@ export default function Home() {
       },
     })
       .then((response) => response.json())
-      .then(json => { 
+      .then(json => {
+        setPessoaId(json.pessoaId);
+        setUsuarioId(json.usuarioId);
         setPessoaNome(json.pessoaNome);
         setPessoaRoupa(json.pessoaRoupa);
         setPessoaCor(json.pessoaCor);
@@ -66,7 +69,7 @@ export default function Home() {
 
   async function getUsuarioId(id) {
     console.log(id);
-      await fetch('http://10.139.75.60:5251/http://api/Usuarios/GetUsuarioId/' + id, {
+    await fetch('http://10.139.75.60:5251/http://api/Usuarios/GetUsuarioId/' + id, {
       method: 'GET',
       headers: {
         'content-type': 'application/json; charset=UTF-8',
@@ -102,21 +105,23 @@ export default function Home() {
         <Text style={css.text}>Carregando produtos...</Text>}
 
       {detalhes && <Detalhes
-          getPessoaId={getPessoaId}
-          description={pessoaObservacao}
-          setDetalhes={setDetalhes}
-          pessoaNome={pessoaNome}
-          pessoaRoupa={pessoaRoupa}
-          pessoaCor={pessoaCor}
-          pessoaSexo={pessoaSexo}
-          pessoaObservacao={pessoaObservacao}
-          pessoaLocalDesaparecimento={pessoaLocalDesaparecimento}
-          pessoaDtDesaparecimento={pessoaDtDesaparecimento}
-          pessoaDtEncontro={pessoaDtEncontro}
-          PessoaStatus={PessoaStatus}
-          usuarioNome={usuarioNome}
+        pessoaId={pessoaId}
+        usuarioId={usuarioId}
+        getPessoaId={getPessoaId}
+        description={pessoaObservacao}
+        setDetalhes={setDetalhes}
+        pessoaNome={pessoaNome}
+        pessoaRoupa={pessoaRoupa}
+        pessoaCor={pessoaCor}
+        pessoaSexo={pessoaSexo}
+        pessoaObservacao={pessoaObservacao}
+        pessoaLocalDesaparecimento={pessoaLocalDesaparecimento}
+        pessoaDtDesaparecimento={pessoaDtDesaparecimento}
+        pessoaDtEncontro={pessoaDtEncontro}
+        PessoaStatus={PessoaStatus}
+        usuarioNome={usuarioNome}
       />}
-    </View>
+    </View> 
   )
 }
 const css = StyleSheet.create({
